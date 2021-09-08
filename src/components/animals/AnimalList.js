@@ -22,10 +22,10 @@ export const AnimalListComponent = (props) => {
     let { toggleDialog, modalIsOpen } = useModal("#dialog--animal")
 
     const syncAnimals = () => {
-        AnimalRepository.getAll().then(data => petAnimals(data))
+        AnimalRepository.getAll().then(data => petAnimals(data)) //animal state stored in animals variable
     }
 
-    useEffect(() => {
+    useEffect(() => { //
         OwnerRepository.getAllCustomers().then(updateOwners)
         AnimalOwnerRepository.getAll().then(setAnimalOwners)
         syncAnimals()
@@ -38,7 +38,7 @@ export const AnimalListComponent = (props) => {
 
     useEffect(() => {
         const handler = e => {
-            if (e.keyCode === 27 && modalIsOpen) {
+            if (e.keyCode === 27 && modalIsOpen) {  //27 is esc.
                 toggleDialog()
             }
         }

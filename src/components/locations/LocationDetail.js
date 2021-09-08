@@ -41,8 +41,10 @@ export default () => {
                         well-trained animal lovers and trainers:`
                     }
                 </p>
+                
                 <p className="lead detailCard__info">
                     {OxfordList(location.employeeLocations, "employee.name")}
+                    
                 </p>
             </div>
         </>

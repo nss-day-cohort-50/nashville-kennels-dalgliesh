@@ -3,9 +3,11 @@ import { useHistory, useParams } from "react-router";
 import AnimalRepository from "../../repositories/AnimalRepository";
 import AnimalOwnerRepository from "../../repositories/AnimalOwnerRepository";
 import OwnerRepository from "../../repositories/OwnerRepository";
+
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import useResourceResolver from "../../hooks/resource/useResourceResolver";
 import "./AnimalCard.css"
+import { userInfo } from "os";
 
 export const Animal = ({ animal, syncAnimals,
     showTreatmentHistory, owners }) => {
@@ -38,6 +40,7 @@ export const Animal = ({ animal, syncAnimals,
 
     useEffect(() => {
         getPeople()
+        console.log(currentAnimal)
     }, [currentAnimal])
 
     useEffect(() => {
@@ -84,13 +87,17 @@ export const Animal = ({ animal, syncAnimals,
                         <section>
                             <h6>Caretaker(s)</h6>
                             <span className="small">
-                                Unknown
+                                {currentAnimal?.animalCaretakers?.map(
+                                  (animalCaretaker)  => {
+                                      return animalCaretaker.user.name
+                                    }
+                                ).join(", ")}  {/*TURN THIS LINE INTO THE CAREGIVER NAME*/}
                             </span>
 
 
                             <h6>Owners</h6>
                             <span className="small">
-                                Owned by
+                                Owned by unknown
                             </span>
 
                             {
