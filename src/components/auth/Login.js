@@ -25,12 +25,13 @@ const Login = () => {
         login(credentials.email, credentials.userName, storage)
             .then(success => {
                 if (success) {
+                    
                     console.log("*** Rerouting to root URL ***")
                     history.push("/")
                 }
             })
     }
-
+  
     const handleUserInput = (event) => {
         const copy = {...credentials}
         copy[event.target.id] = event.target.value
