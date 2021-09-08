@@ -4,11 +4,13 @@ import Settings from "../../repositories/Settings"
 const useSimpleAuth = () => {
 
     const isAuthenticated = () => localStorage.getItem("kennel_token") !== null
-        || sessionStorage.getItem("kennel_token") !== null
-
-    const register = (user) => {
-        return fetch(`${Settings.remoteURL}/users`, {
-            method: "POST",
+        || sessionStorage.getItem("kennel_token") !== null 
+            //value for kennel_token key is not null on this sign in OR for a saved 'remember me session
+            //localStrage: value stored if window closes; sessionStorage: value clears if window closes.
+    
+            const register = (user) => { 
+        return fetch(`${Settings.remoteURL}/users`, {//remote url refers to api url stored in settings module
+            method: "POST", //make a new user object in api
             headers: {
                 "Content-Type": "application/json"
             },
