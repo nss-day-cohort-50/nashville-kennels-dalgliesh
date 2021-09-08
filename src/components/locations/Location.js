@@ -1,11 +1,19 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import locationImage from "./location.png"
 import "./Location.css"
+import { AnimalListComponent } from "../animals/AnimalList"
+import { Animal } from "../animals/Animal"
 
 
 export default ({location}) => {
+
+    
+
     return (
+        <>
+        
+        
         <article className="card location" style={{ width: `18rem` }}>
             <section className="card-body">
                 <img alt="Kennel location icon" src={locationImage} className="icon--location" />
@@ -20,11 +28,12 @@ export default ({location}) => {
                 </h5>
             </section>
             <section>
-                Total animals
+                Total Animals: {location.animals.length}
             </section>
             <section>
-                Total locations
+                Total Employees: {location.employeeLocations.length}
             </section>
         </article>
+        </>
     )
 }
