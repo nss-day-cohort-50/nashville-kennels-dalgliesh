@@ -7,8 +7,11 @@ import "./LocationList.css"
 export const LocationList = () => {
     const [ locations, updateLocations ] = useState([])
 
+   
+    
+    
     useEffect(() => {
-        LocationRepository.getAll()
+        LocationRepository.getAll().then(data => updateLocations(data))
     }, [])
 
     return (
