@@ -44,7 +44,7 @@ export default () => {
                 
                 <p className="lead detailCard__info">
                     {OxfordList(location.employeeLocations, "employee.name")}
-                    breakpoint
+                    
                 </p>
             </div>
         </>

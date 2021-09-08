@@ -37,5 +37,5 @@ export default {
     },
     async getAll() {
         return await fetchIt(`${Settings.remoteURL}/locations?_embed=animals&_embed=employeeLocations`)
-    }
+    } // await is another syntax for asych, like .then chained on a fetch
 }

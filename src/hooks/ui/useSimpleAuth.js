@@ -1,14 +1,14 @@
 import Settings from "../../repositories/Settings"
 
 
-const useSimpleAuth = () => {
+const useSimpleAuth = () => {  //animals.js line 17
 
     const isAuthenticated = () => localStorage.getItem("kennel_token") !== null
         || sessionStorage.getItem("kennel_token") !== null 
             //value for kennel_token key is not null on this sign in OR for a saved 'remember me session
             //localStrage: value stored if window closes; sessionStorage: value clears if window closes.
     
-            const register = (user) => { 
+        const register = (user) => { 
         return fetch(`${Settings.remoteURL}/users`, {//remote url refers to api url stored in settings module
             method: "POST", //make a new user object in api
             headers: {
@@ -16,7 +16,7 @@ const useSimpleAuth = () => {
             },
             body: JSON.stringify(user)
         })
-        .then(_ => _.json())
+        .then(_ => _.json()) //underscore is a variable because Steve is SNEAKY
         .then(response => {
             if ("id" in response) {
                 const baseUserObject = JSON.stringify(response)
@@ -24,7 +24,7 @@ const useSimpleAuth = () => {
                 localStorage.setItem("kennel_token", encoded)
             }
         })
-    }
+    } 
 
     const login = (email) => {
         return fetch(`${Settings.remoteURL}/users?email=${email}`, {
